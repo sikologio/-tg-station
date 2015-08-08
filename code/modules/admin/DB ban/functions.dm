@@ -75,14 +75,14 @@
 		computerid = bancid
 		ip = banip
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT id FROM [format_table_name("player")] WHERE ckey = '[ckey]'")
+	var/DBQuery/query = dbcon.NewQuery("Selecciona la ID desde [format_table_name("player")] donde ckey = '[ckey]'")
 	query.Execute()
 	var/validckey = 0
 	if(query.NextRow())
 		validckey = 1
 	if(!validckey)
 		if(!banned_mob || (banned_mob && !IsGuestKey(banned_mob.key)))
-			message_admins("<font color='red'>[key_name_admin(usr)] attempted to ban [ckey], but [ckey] has not been seen yet. Please only ban actual players.</font>",1)
+			message_admins("<font color='red'>[key_name_admin(usr)] Intento banear a [ckey], pero [ckey] no esta conectado todavia. Please only ban actual players.</font>",1)
 			return
 
 	var/a_ckey
